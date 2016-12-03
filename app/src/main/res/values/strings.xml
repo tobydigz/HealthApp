@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Health App</string>
+    <string name="home_title">ANTE-NATAL CARE APP</string>
+    <string name="prescription">Prescription</string>
+    <string name="immunization">Immunization</string>
+    <string name="food_intake">Food Intake</string>
+    <string name="emergency">Emergency</string>
+    <string name="child_care">Child Care</string>
+    <string name="weight_loss">Weight Loss</string>
+    <string name="calendar">Calendar</string>
+    <string name="reschedule">Reschedule</string>
+    <string name="hospital_talk">Hospital Talk</string>
+</resources>
