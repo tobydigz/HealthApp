@@ -3,4 +3,27 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--Floral much?-->
+    <color name="a">#ea3556</color>
+    <color name="b">#61d2d6</color>
+    <color name="c">#ede5e2</color>
+    <color name="d">#ed146f</color>
+    <color name="e">#edde45</color>
+    <color name="f">#9bf0e9</color>
+
+    <!--health and longetivity-->
+    <color name="g">#db4d37</color>
+    <color name="h">#eb6c36</color>
+    <color name="i">#f58931</color>
+    <color name="j">#fab937</color>
+    <color name="k">#fceac5</color>
+
+    <!--Color blocking-->
+    <color name="l">#dd577a</color>
+    <color name="m">#fff0cf</color>
+    <color name="n">#fe5a27</color>
+    <color name="o">#49aec0</color>
+    <color name="p">#131723</color>
+
 </resources>

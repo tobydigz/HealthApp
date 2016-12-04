@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/calendar"/>
+        <item
+            android:id="@+id/nav_prescription"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/prescription"/>
+        <item
+            android:id="@+id/nav_reminder"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/reminders"/>
+    </group>
+
+    <item
+        android:menuCategory="secondary"
+        android:title="@string/more">
+        <menu>
+            <item
+                android:id="@+id/nav_hospital_talk"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/hospital_talk"/>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/action_settings"/>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/sign_out"/>
+        </menu>
+    </item>
+
+</menu>

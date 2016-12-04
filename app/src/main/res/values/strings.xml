@@ -10,4 +10,17 @@
     <string name="calendar">Calendar</string>
     <string name="reschedule">Reschedule</string>
     <string name="hospital_talk">Hospital Talk</string>
+    <string name="title_activity_home">Home</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="more">More</string>
+    <string name="reminders">Reminders</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="artesunate">Artesunate</string>
 </resources>
