@@ -2,9 +2,10 @@ package com.digzdigital.healthapp;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,9 +13,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import com.digzdigital.healthapp.fragment.ImmunizationFragment;
+import com.digzdigital.healthapp.fragment.NutritionFragment;
+import com.digzdigital.healthapp.fragment.PrescriptionFragment;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private FragmentManager fragmentManager;
+    private Fragment prescriptionFragment, immunizationFragment, nutritionFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +51,14 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        fragmentManager = getSupportFragmentManager();
+        prescriptionFragment = PrescriptionFragment.newInstance("a", "b");
+        fragmentManager.beginTransaction()
+                .replace(R.id.contentFrame, prescriptionFragment)
+                .addToBackStack(null)
+                .commit();
+
     }
 
     @Override
@@ -81,16 +99,33 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_calendar) {
-            // Handle the camera action
+        if (id == R.id.nav_immunization) {
+
+            if (immunizationFragment == null)
+                immunizationFragment = ImmunizationFragment.newInstance("a", "b");
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contentFrame, immunizationFragment)
+                    .addToBackStack(null)
+                    .commit();
         } else if (id == R.id.nav_hospital_talk) {
 
         } else if (id == R.id.nav_logout) {
 
         } else if (id == R.id.nav_prescription) {
+            if (prescriptionFragment == null)
+                prescriptionFragment = PrescriptionFragment.newInstance("a", "b");
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contentFrame, prescriptionFragment)
+                    .addToBackStack(null)
+                    .commit();
+        } else if (id == R.id.nav_nutrition) {
 
-        } else if (id == R.id.nav_reminder) {
-
+            if (nutritionFragment == null)
+                nutritionFragment = NutritionFragment.newInstance("a", "b");
+            fragmentManager.beginTransaction()
+                    .replace(R.id.contentFrame, nutritionFragment)
+                    .addToBackStack(null)
+                    .commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

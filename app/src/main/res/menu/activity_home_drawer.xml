@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_calendar"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/calendar"/>
-        <item
             android:id="@+id/nav_prescription"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_book_black_24dp"
             android:title="@string/prescription"/>
         <item
+            android:id="@+id/nav_immunization"
+            android:icon="@drawable/ic_injection_black_24dp"
+            android:title="@string/immunization"/>
+        <item
             android:id="@+id/nav_reminder"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_notifications_black_24dp"
             android:title="@string/reminders"/>
+        <item
+            android:id="@+id/nav_nutrition"
+            android:icon="@drawable/ic_restaurant_black_24dp"
+            android:title="@string/nutrition"/>
     </group>
 
     <item
         android:menuCategory="secondary"
-        android:title="@string/more">
+        android:title="@string/more"
+        >
         <menu>
             <item
                 android:id="@+id/nav_hospital_talk"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_call_black_24dp"
                 android:title="@string/hospital_talk"/>
             <item
                 android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_menu_manage"
                 android:title="@string/action_settings"/>
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
                 android:title="@string/sign_out"/>
         </menu>
     </item>

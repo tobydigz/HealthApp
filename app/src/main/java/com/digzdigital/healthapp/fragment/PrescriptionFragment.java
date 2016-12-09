@@ -1,11 +1,22 @@
-package com.digzdigital.healthapp;
+package com.digzdigital.healthapp.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.digzdigital.healthapp.R;
+import com.digzdigital.healthapp.adapter.PrescriptionListAdapter;
+import com.digzdigital.healthapp.model.data.Prescription;
+
+import java.util.Date;
+
+import io.realm.RealmResults;
 
 
 /**
@@ -22,7 +33,8 @@ public class PrescriptionFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private RecyclerView rv;
+    private PrescriptionListAdapter prescriptionListAdapter;
 
     public PrescriptionFragment() {
         // Required empty public constructor
@@ -59,7 +71,34 @@ public class PrescriptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_prescription, container, false);
+        View view = inflater.inflate(R.layout.fragment_default, container, false);
+        rv = (RecyclerView) view.findViewById(R.id.rv);
+        return view;
     }
+
+    private void doRest() {
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        rv.setLayoutManager(llm);
+        RealmResults<Prescription> prescriptions = getPrescriptions();
+
+        if (prescriptions == null) return;
+        if (prescriptions.size() > 0) return;
+        prescriptionListAdapter = new PrescriptionListAdapter(prescriptions, getContext(), new Date());// TODO: 09/12/2016 change this date
+        rv.setAdapter(prescriptionListAdapter);
+
+        prescriptionListAdapter.setOnItemClickListener(new PrescriptionListAdapter.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+            }
+        });
+
+
+    }
+
+    private RealmResults<Prescription> getPrescriptions() {
+
+        return null;
+    }
+
 
 }

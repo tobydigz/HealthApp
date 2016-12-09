@@ -1,5 +1,7 @@
 package com.digzdigital.healthapp.model.data;
 
+import com.digzdigital.healthapp.R;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -48,5 +50,10 @@ public class Drug extends RealmObject{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getImageResId(){
+        if (type.equals("Syrup"))return R.mipmap.syrup_icon;
+        return R.mipmap.pill_icon;
     }
 }

@@ -15,11 +15,11 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/drugImage"
+            android:id="@+id/eventImage"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/pill_icon"
+            android:src="@mipmap/immunization_icon"
             tools:ignore="ContentDescription"/>
 
         <LinearLayout
@@ -35,20 +35,20 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/drugName"
+                    android:id="@+id/immunizationName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/artesunate"
+                    android:text="@string/immunizationDrug"
                     android:textSize="22sp"
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/dosageTime"
+                    android:id="@+id/immunizationTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
-                    android:text="@string/time"
+                    android:text="16:22"
                     android:textSize="20sp"/>
             </LinearLayout>
 
@@ -57,21 +57,21 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/dosageAmount"
+                    android:id="@+id/immunizationLocation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/dose_amount"
-                    android:textSize="22sp"
+                    android:text="St. Martins General Hospital"
+                    android:textSize="17sp"
                     />
 
                 <TextView
-                    android:id="@+id/dosageDate"
+                    android:id="@+id/immunizationDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
                     android:gravity="center"
-                    android:text="@string/date"
+                    android:text="Dec 4"
                     android:textSize="18sp"/>
             </LinearLayout>
         </LinearLayout>
