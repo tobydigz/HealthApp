@@ -18,6 +18,17 @@ public class Food extends RealmObject{
     private int day;/*Ranges from 0 to 6*/
     private int trimester; /*Ranges from 0 to 2*/
 
+    public Food (){
+
+    }
+
+    public Food(String description, int type, int day, int trimester){
+        this.description = description;
+        this.type = type;
+        this.day = day;
+        this.trimester = trimester;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -39,7 +50,10 @@ public class Food extends RealmObject{
                 type = "Dinner";
                 break;
             case 3:
-                type = "Snacks";
+                type = "Snack";
+                break;
+            case 4:
+                type = "Snack";
                 break;
 
         }
