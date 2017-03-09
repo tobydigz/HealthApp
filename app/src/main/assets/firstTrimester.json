@@ -1,0 +1,53 @@
+{
+  "day": [
+    {
+      "breakfast": "Porridge made with milk flavoured with a pinch of cinnamon and a tbsp apple puree\nGlass of apple juice",
+      "snack_a": "Yoghurt drink\nOrange",
+      "lunch": "Smoked chicken and avocado salad\nBanana",
+      "snack_b": "Small fruit or cheese scone",
+      "dinner": "Chicken cacciatore with brown rice"
+    },
+    {
+      "breakfast": "Greek yoghurt and ginger with chopped fresh fruit (mango, peach or nectarine) served on scotch pancakes\nFruit smoothie",
+      "snack_a": "Slice of fruited malt loaf",
+      "lunch": "Baked potato and cottage cheese\nSmall bunch of grapes",
+      "snack_b": "Handful of dried apricots",
+      "dinner": "Beef and black eye bean casserole"
+    },
+    {
+      "breakfast": "Bran flakes with semi-skimmed milk and sliced banana\nGlass of cranberry juice",
+      "snack_a": "Sultana scotch pancake",
+      "lunch": "Broccoli and pea soup with a crusty roll\nApple",
+      "snack_b": "Carrot sticks and hummus dip",
+      "dinner": "Healthier sausage and apple casserole"
+    },
+    {
+      "breakfast": "Porridge made with milk flavoured with a tbsp of tinned berries in fruit juice\nGreen or herbal tea",
+      "snack_a": "Pot of low-fat yoghurt",
+      "lunch": "Feta salad couscous\nPapaya",
+      "snack_b": "Slice of banana bread",
+      "dinner": "Creamy haddock and salmon pie with asparagus"
+    },
+    {
+      "breakfast": "Wholegrain toast spread with peanut butter\nYoghurt drink",
+      "snack_a": "Rice pot",
+      "lunch": "Cranberry and soft cheese wrap with watercress\nSlice of melon",
+      "snack_b": "Breadsticks with low- fat soft cheese dip",
+      "dinner": "Lamb chops with new potatoes, broccoli and peas"
+    },
+    {
+      "breakfast": "Greek yoghurt and ginger mixed with tbsp chopped dried fruit (apricots, figs or dates) and tbsp muesli\nGlass of orange juice",
+      "snack_a": "Small roll with peanut butter",
+      "lunch": "Salmon and watercress salad\nKiwi fruit",
+      "snack_b": "2 fig rolls",
+      "dinner": "Pasta puttanesca with low-fat garlic bread"
+    },
+    {
+      "breakfast": "Scrambled eggs on toasted bagel\nYoghurt drink",
+      "snack_a": "Banana",
+      "lunch": "Roast chicken with roast potatoes, broccoli and carrots\nApple and pear crumble",
+      "snack_b": "1-2 handfuls of mixed nuts and dried fruit",
+      "dinner": "Tofu and butternut squash flan"
+    }
+  ]
+}

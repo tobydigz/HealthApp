@@ -1,0 +1,163 @@
+{
+  "trimester": [
+    {
+      "day": [
+        {
+          "breakfast": "Porridge made with milk flavoured with a pinch of cinnamon and a tbsp apple puree\nGlass of apple juice",
+          "snack_a": "Yoghurt drink\nOrange",
+          "lunch": "Smoked chicken and avocado salad\nBanana",
+          "snack_b": "Small fruit or cheese scone",
+          "dinner": "Chicken cacciatore with brown rice"
+        },
+        {
+          "breakfast": "Greek yoghurt and ginger with chopped fresh fruit (mango, peach or nectarine) served on scotch pancakes\nFruit smoothie",
+          "snack_a": "Slice of fruited malt loaf",
+          "lunch": "Baked potato and cottage cheese\nSmall bunch of grapes",
+          "snack_b": "Handful of dried apricots",
+          "dinner": "Beef and black eye bean casserole"
+        },
+        {
+          "breakfast": "Bran flakes with semi-skimmed milk and sliced banana\nGlass of cranberry juice",
+          "snack_a": "Sultana scotch pancake",
+          "lunch": "Broccoli and pea soup with a crusty roll\nApple",
+          "snack_b": "Carrot sticks and hummus dip",
+          "dinner": "Healthier sausage and apple casserole"
+        },
+        {
+          "breakfast": "Porridge made with milk flavoured with a tbsp of tinned berries in fruit juice\nGreen or herbal tea",
+          "snack_a": "Pot of low-fat yoghurt",
+          "lunch": "Feta salad couscous\nPapaya",
+          "snack_b": "Slice of banana bread",
+          "dinner": "Creamy haddock and salmon pie with asparagus"
+        },
+        {
+          "breakfast": "Wholegrain toast spread with peanut butter\nYoghurt drink",
+          "snack_a": "Rice pot",
+          "lunch": "Cranberry and soft cheese wrap with watercress\nSlice of melon",
+          "snack_b": "Breadsticks with low- fat soft cheese dip",
+          "dinner": "Lamb chops with new potatoes, broccoli and peas"
+        },
+        {
+          "breakfast": "Greek yoghurt and ginger mixed with tbsp chopped dried fruit (apricots, figs or dates) and tbsp muesli\nGlass of orange juice",
+          "snack_a": "Small roll with peanut butter",
+          "lunch": "Salmon and watercress salad\nKiwi fruit",
+          "snack_b": "2 fig rolls",
+          "dinner": "Pasta puttanesca with low-fat garlic bread"
+        },
+        {
+          "breakfast": "Scrambled eggs on toasted bagel\nYoghurt drink",
+          "snack_a": "Banana",
+          "lunch": "Roast chicken with roast potatoes, broccoli and carrots\nApple and pear crumble",
+          "snack_b": "1-2 handfuls of mixed nuts and dried fruit",
+          "dinner": "Tofu and butternut squash flan"
+        }
+      ]
+    },
+    {
+      "day": [
+        {
+          "breakfast": "Porridge made with milk flavoured with a pinch of cinnamon and a tbsp apple puree\nApple juice",
+          "snack_a": "Handful each of dried apricots and almonds",
+          "lunch": "Super salad\nChopped papaya",
+          "snack_b": "Small fruit or cheese scone with spread",
+          "dinner": "Chicken and mushroom risotto\nSide salad"
+        },
+        {
+          "breakfast": "Pot of plain fromage frais mixed with chopped fresh fruit (mango, peach or nectarine) and a tbsp flaked almonds served on scotch pancakes\nPapaya smoothie",
+          "snack_a": "Sesame seed bar (good source of iron too)",
+          "lunch": "Pistachio chicken with chopped mixed salad or smoked chicken and avocado salad\nChopped pineapple",
+          "snack_b": "Hummus with pitta",
+          "dinner": "Salmon with pine nuts, broccoli and sweet potato mash"
+        },
+        {
+          "breakfast": "Wheat bisk cereal with milk with mashed/sliced banana\nPapaya smoothie",
+          "snack_a": "Pot of fromage frais",
+          "lunch": "Watercress and celeriac soup with wholegrain toast and spread",
+          "snack_b": "Oaty cranberry and orange cookie",
+          "dinner": "Spaghetti carbonara\nWilted spinach"
+        },
+        {
+          "breakfast": "Porridge made with milk flavoured with a tbsp of berry compote\nHerbal tea",
+          "snack_a": "Fruit scone with spread",
+          "lunch": "Sardines (good source of omega 3, calcium and vitamin D) on toast",
+          "snack_b": "Rye crackers with soft cheese",
+          "dinner": "Shepherd’s pie with carrots"
+        },
+        {
+          "breakfast": "Wholegrain toast spread with peanut butter\nYoghurt drink",
+          "snack_a": "Banana",
+          "lunch": "Ciabatta with halloumi, basil and sundried tomatoes\nOrange",
+          "snack_b": "Slice of gingerbread",
+          "dinner": "Kedgeree"
+        },
+        {
+          "breakfast": "Pot of Greek yoghurt mixed with tbsp chopped dried fruit, flaked almonds and tbsp muesli (make the night before and keep in the fridge to soften)\nOrange juice",
+          "snack_a": "Apple and bran muffin",
+          "lunch": "Cheesy baked beans in a baked potato",
+          "snack_b": "2 handfuls of walnuts and dried fruit",
+          "dinner": "Stir fry chicken with spring greens and noodles"
+        },
+        {
+          "breakfast": "Scrambled eggs on toasted bagel with spread\nYoghurt drink",
+          "snack_a": "Apple and bran muffin",
+          "lunch": "Sweet apple lamb couscous and broccoli",
+          "snack_b": "Oaty cranberry and orange cookie",
+          "dinner": "Mushroom and celery pasta bake"
+        }
+      ]
+    },
+    {
+      "day": [
+        {
+          "breakfast": "Porridge made with milk flavoured with a pinch of cinnamon and a tbsp apple puree\nApple juice",
+          "snack_a": "Small roll with peanut butter",
+          "lunch": "Couscous egg salad with pine nuts and currants\nSatsuma",
+          "snack_b": "Carrot sticks with hummus",
+          "dinner": "Smoked mackerel and spinach pasta"
+        },
+        {
+          "breakfast": "Pot of plain fromage frais mixed with chopped fresh fruit (mango, peach or nectarine) and a tbsp flaked almonds served on scotch pancakes\nPapaya smoothie",
+          "snack_a": "Muffin with a slice of edam",
+          "lunch": "Roast beef and rocket baguette\nSmall bunch of grapes",
+          "snack_b": "Thick slice of banana bread",
+          "dinner": "Creamy chickpea curry"
+        },
+        {
+          "breakfast": "Wheat bisk cereal with milk with mashed/sliced banana\nPapaya smoothie",
+          "snack_a": "Melon with blueberries and yoghurt",
+          "lunch": "Beetroot soup\nMelon",
+          "snack_b": "2 rye crackers with sardine paste",
+          "dinner": "Chicken risotto"
+        },
+        {
+          "breakfast": "Porridge made with milk flavoured with a tbsp of berry compote\nHerbal tea",
+          "snack_a": "Slice of fruited malt loaf with spread",
+          "lunch": "Pitta with lamb’s lettuce, gruyere and grapes\nSliced mango",
+          "snack_b": "2-3 mini falafels",
+          "dinner": "Creamy haddock and salmon pie with green beans"
+        },
+        {
+          "breakfast": "Wholegrain toast spread with peanut butter\nYoghurt drink",
+          "snack_a": "2 handfuls of walnuts and dried fruit",
+          "lunch": "Salmon and watercress salad\nChopped apple",
+          "snack_b": "Fruity flapjack",
+          "dinner": "Lamb chops with sweet potato wedges and mange tout"
+        },
+        {
+          "breakfast": "Pot of Greek yoghurt mixed with tbsp chopped dried fruit, flaked almonds and tbsp muesli (make the night before and keep in the fridge to soften)\nOrange juice",
+          "snack_a": "Rice pot",
+          "lunch": "Toasted ham and cheese wholemeal sandwich\nPear",
+          "snack_b": "Wholemeal toast with baked beans",
+          "dinner": "Beef lasagne made with ragu sauce with a mixed side salad"
+        },
+        {
+          "breakfast": "Scrambled eggs on toasted bagel with spread\nYoghurt drink",
+          "snack_a": "Strawberry milkshake",
+          "lunch": "Roast lamb with roast potatoes, carrots and green beans\nSultana rice pudding",
+          "snack_b": "Cheese on toast",
+          "dinner": "Spinach and cheese quiche"
+        }
+      ]
+    }
+  ]
+}

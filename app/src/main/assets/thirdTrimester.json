@@ -1,0 +1,53 @@
+{
+  "day": [
+    {
+      "breakfast": "Porridge made with milk flavoured with a pinch of cinnamon and a tbsp apple puree\nApple juice",
+      "snack_a": "Small roll with peanut butter",
+      "lunch": "Couscous egg salad with pine nuts and currants\nSatsuma",
+      "snack_b": "Carrot sticks with hummus",
+      "dinner": "Smoked mackerel and spinach pasta"
+    },
+    {
+      "breakfast": "Pot of plain fromage frais mixed with chopped fresh fruit (mango, peach or nectarine) and a tbsp flaked almonds served on scotch pancakes\nPapaya smoothie",
+      "snack_a": "Muffin with a slice of edam",
+      "lunch": "Roast beef and rocket baguette\nSmall bunch of grapes",
+      "snack_b": "Thick slice of banana bread",
+      "dinner": "Creamy chickpea curry"
+    },
+    {
+      "breakfast": "Wheat bisk cereal with milk with mashed/sliced banana\nPapaya smoothie",
+      "snack_a": "Melon with blueberries and yoghurt",
+      "lunch": "Beetroot soup\nMelon",
+      "snack_b": "2 rye crackers with sardine paste",
+      "dinner": "Chicken risotto"
+    },
+    {
+      "breakfast": "Porridge made with milk flavoured with a tbsp of berry compote\nHerbal tea",
+      "snack_a": "Slice of fruited malt loaf with spread",
+      "lunch": "Pitta with lamb’s lettuce, gruyere and grapes\nSliced mango",
+      "snack_b": "2-3 mini falafels",
+      "dinner": "Creamy haddock and salmon pie with green beans"
+    },
+    {
+      "breakfast": "Wholegrain toast spread with peanut butter\nYoghurt drink",
+      "snack_a": "2 handfuls of walnuts and dried fruit",
+      "lunch": "Salmon and watercress salad\nChopped apple",
+      "snack_b": "Fruity flapjack",
+      "dinner": "Lamb chops with sweet potato wedges and mange tout"
+    },
+    {
+      "breakfast": "Pot of Greek yoghurt mixed with tbsp chopped dried fruit, flaked almonds and tbsp muesli (make the night before and keep in the fridge to soften)\nOrange juice",
+      "snack_a": "Rice pot",
+      "lunch": "Toasted ham and cheese wholemeal sandwich\nPear",
+      "snack_b": "Wholemeal toast with baked beans",
+      "dinner": "Beef lasagne made with ragu sauce with a mixed side salad"
+    },
+    {
+      "breakfast": "Scrambled eggs on toasted bagel with spread\nYoghurt drink",
+      "snack_a": "Strawberry milkshake",
+      "lunch": "Roast lamb with roast potatoes, carrots and green beans\nSultana rice pudding",
+      "snack_b": "Cheese on toast",
+      "dinner": "Spinach and cheese quiche"
+    }
+  ]
+}

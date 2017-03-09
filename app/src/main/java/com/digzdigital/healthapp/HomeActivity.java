@@ -1,5 +1,8 @@
 package com.digzdigital.healthapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,17 +17,26 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.digzdigital.healthapp.fragment.ImmunizationFragment;
 import com.digzdigital.healthapp.fragment.NutritionFragment;
 import com.digzdigital.healthapp.fragment.PrescriptionFragment;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import io.realm.Realm;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FragmentManager fragmentManager;
     private Fragment prescriptionFragment, immunizationFragment, nutritionFragment;
+    private Boolean firstTime = null;
+    Realm realm;
+    private String jsonString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +70,21 @@ public class HomeActivity extends AppCompatActivity
                 .replace(R.id.contentFrame, prescriptionFragment)
                 .addToBackStack(null)
                 .commit();
+        // realm = Realm.getDefaultInstance();
+        if (isFirstTime())setupDbStuff();
 
+    }
+
+    private boolean isFirstTime() {
+        if (firstTime != null) return firstTime;
+        SharedPreferences mPreferences = this.getSharedPreferences("health_app", Context.MODE_PRIVATE);
+        firstTime = mPreferences.getBoolean("firstTime", true);
+        if (!firstTime) return firstTime;
+        SharedPreferences.Editor editor = mPreferences.edit();
+        editor.putBoolean("firstTime", false);
+        editor.commit();
+
+        return firstTime;
     }
 
     @Override
@@ -121,7 +147,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_nutrition) {
 
             if (nutritionFragment == null)
-                nutritionFragment = NutritionFragment.newInstance("a", "b");
+                nutritionFragment =new NutritionFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.contentFrame, nutritionFragment)
                     .addToBackStack(null)
@@ -132,4 +158,46 @@ public class HomeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void setupDbStuff() {
+
+        setupPrescription();
+        setupImmunization();
+
+
+
+    }
+
+    private void setupImmunization() {
+
+    }
+
+    private void setupPrescription() {
+
+    }
+    public String readAssetsFile() {
+        if (this.jsonString != null)return this.jsonString;
+        AssetManager assetManager = getAssets();
+        StringBuilder buf = new StringBuilder();
+        InputStream json = null;
+        try {
+            json = assetManager.open("trimester.json");
+            BufferedReader in =
+                    new BufferedReader(new InputStreamReader(json, "UTF-8"));
+            String str;
+            while ((str = in.readLine()) != null) {
+                buf.append(str);
+            }
+
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        jsonString = buf.toString();
+        return jsonString;
+
+
+    }
+
+
 }

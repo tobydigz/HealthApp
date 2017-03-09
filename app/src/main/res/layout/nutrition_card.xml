@@ -4,30 +4,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp"
     android:orientation="vertical"
-    app:contentPadding="6dp"
-    android:layout_marginBottom="1dp">
+    app:contentPadding="6dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/breakfast"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:id="@+id/foodType"/>
+            >
+
+            <ImageView
+                android:id="@+id/foodImage"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginEnd="4dp"
+                android:src="@mipmap/breakfast"/>
+
+            <TextView
+                android:id="@+id/foodType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/breakfast"
+                android:layout_gravity="center_vertical"
+                android:textSize="28sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
 
         <TextView
+            android:id="@+id/foodDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="2dp"
+            android:padding="6dp"
             android:text="@string/breakfast_text"
-            android:textSize="18sp"
-            android:id="@+id/foodDescription"/>
+            android:textSize="17sp"
+            android:fontFamily="serif-monospace"/>
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

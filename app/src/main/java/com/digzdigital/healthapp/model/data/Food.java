@@ -1,5 +1,7 @@
 package com.digzdigital.healthapp.model.data;
 
+import com.digzdigital.healthapp.R;
+
 import io.realm.RealmObject;
 
 /**
@@ -16,17 +18,16 @@ public class Food extends RealmObject{
       * snacks = 3*/
     private int type;
     private int day;/*Ranges from 0 to 6*/
-    private int trimester; /*Ranges from 0 to 2*/
+    private int imageResId;
 
     public Food (){
 
     }
 
-    public Food(String description, int type, int day, int trimester){
+    public Food(String description, int type, int day){
         this.description = description;
         this.type = type;
         this.day = day;
-        this.trimester = trimester;
     }
 
     public String getDescription() {
@@ -44,16 +45,16 @@ public class Food extends RealmObject{
                 type = "Breakfast";
             break;
             case 1:
-                type = "Lunch";
+                type = "Snack";
                 break;
             case 2:
-                type = "Dinner";
+                type = "Lunch";
                 break;
             case 3:
                 type = "Snack";
                 break;
             case 4:
-                type = "Snack";
+                type = "Dinner";
                 break;
 
         }
@@ -96,23 +97,24 @@ public class Food extends RealmObject{
         this.day = day;
     }
 
-    public String getTrimester() {
-        String trimester = null;
-        switch (this.trimester){
+    public int getImageResId() {
+        int resId = 0;
+        switch (type){
             case 0:
-                trimester="First Trimester";
+                resId = R.mipmap.breakfast;
                 break;
             case 1:
-                trimester="Second Trimester";
+            case 3:
+                resId = R.mipmap.snacks;
                 break;
             case 2:
-                trimester="Third Trimester";
+                resId = R.mipmap.lunch;
                 break;
-        }
-        return trimester;
-    }
+            case 4:
+                resId = R.mipmap.dinner;
+                break;
 
-    public void setTrimester(int trimester) {
-        this.trimester = trimester;
+        }
+        return resId;
     }
 }

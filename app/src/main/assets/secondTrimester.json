@@ -1,0 +1,53 @@
+{
+  "day": [
+    {
+      "breakfast": "Porridge made with milk flavoured with a pinch of cinnamon and a tbsp apple puree\nApple juice",
+      "snack_a": "Handful each of dried apricots and almonds",
+      "lunch": "Super salad\nChopped papaya",
+      "snack_b": "Small fruit or cheese scone with spread",
+      "dinner": "Chicken and mushroom risotto\nSide salad"
+    },
+    {
+      "breakfast": "Pot of plain fromage frais mixed with chopped fresh fruit (mango, peach or nectarine) and a tbsp flaked almonds served on scotch pancakes\nPapaya smoothie",
+      "snack_a": "Sesame seed bar (good source of iron too)",
+      "lunch": "Pistachio chicken with chopped mixed salad or smoked chicken and avocado salad\nChopped pineapple",
+      "snack_b": "Hummus with pitta",
+      "dinner": "Salmon with pine nuts, broccoli and sweet potato mash"
+    },
+    {
+      "breakfast": "Wheat bisk cereal with milk with mashed/sliced banana\nPapaya smoothie",
+      "snack_a": "Pot of fromage frais",
+      "lunch": "Watercress and celeriac soup with wholegrain toast and spread",
+      "snack_b": "Oaty cranberry and orange cookie",
+      "dinner": "Spaghetti carbonara\nWilted spinach"
+    },
+    {
+      "breakfast": "Porridge made with milk flavoured with a tbsp of berry compote\nHerbal tea",
+      "snack_a": "Fruit scone with spread",
+      "lunch": "Sardines (good source of omega 3, calcium and vitamin D) on toast",
+      "snack_b": "Rye crackers with soft cheese",
+      "dinner": "Shepherd’s pie with carrots"
+    },
+    {
+      "breakfast": "Wholegrain toast spread with peanut butter\nYoghurt drink",
+      "snack_a": "Banana",
+      "lunch": "Ciabatta with halloumi, basil and sundried tomatoes\nOrange",
+      "snack_b": "Slice of gingerbread",
+      "dinner": "Kedgeree"
+    },
+    {
+      "breakfast": "Pot of Greek yoghurt mixed with tbsp chopped dried fruit, flaked almonds and tbsp muesli (make the night before and keep in the fridge to soften)\nOrange juice",
+      "snack_a": "Apple and bran muffin",
+      "lunch": "Cheesy baked beans in a baked potato",
+      "snack_b": "2 handfuls of walnuts and dried fruit",
+      "dinner": "Stir fry chicken with spring greens and noodles"
+    },
+    {
+      "breakfast": "Scrambled eggs on toasted bagel with spread\nYoghurt drink",
+      "snack_a": "Apple and bran muffin",
+      "lunch": "Sweet apple lamb couscous and broccoli",
+      "snack_b": "Oaty cranberry and orange cookie",
+      "dinner": "Mushroom and celery pasta bake"
+    }
+  ]
+}

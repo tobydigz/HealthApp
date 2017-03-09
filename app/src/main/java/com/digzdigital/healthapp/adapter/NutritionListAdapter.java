@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.digzdigital.healthapp.R;
 import com.digzdigital.healthapp.model.data.Food;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import io.realm.RealmResults;
@@ -20,9 +21,9 @@ import io.realm.RealmResults;
  */
 public class NutritionListAdapter extends RecyclerView.Adapter<NutritionListAdapter.ViewHolder> {
     private static MyClickListener myClickListener;
-    private RealmResults<Food> foods;
+    private ArrayList<Food> foods;
 
-    public NutritionListAdapter(RealmResults<Food> foods) {
+    public NutritionListAdapter(ArrayList<Food> foods) {
         this.foods = foods;
     }
 
@@ -42,6 +43,7 @@ public class NutritionListAdapter extends RecyclerView.Adapter<NutritionListAdap
 
         holder.foodType.setText(food.getType());
         holder.foodDescription.setText(food.getDescription());
+        holder.foodImage.setImageResource(food.getImageResId());
     }
 
     @Override
@@ -61,10 +63,12 @@ public class NutritionListAdapter extends RecyclerView.Adapter<NutritionListAdap
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView foodType, foodDescription;
+        ImageView foodImage;
         ViewHolder(View itemView) {
             super(itemView);
             foodType = (TextView) itemView.findViewById(R.id.foodType);
             foodDescription = (TextView) itemView.findViewById(R.id.foodDescription);
+            foodImage = (ImageView) itemView.findViewById(R.id.foodImage);
             itemView.setOnClickListener(this);
         }
 
