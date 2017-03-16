@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
                     android:gravity="center"
-                    android:text="@string/date"
+                    android:text="@string/month"
                     android:textSize="18sp"/>
             </LinearLayout>
         </LinearLayout>

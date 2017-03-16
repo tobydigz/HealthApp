@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_prescription"
+            android:id="@+id/nav_mother"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="@string/mother"/>
+        <item
+            android:id="@+id/nav_antenatal_tests"
             android:icon="@drawable/ic_book_black_24dp"
-            android:title="@string/prescription"/>
+            android:title="@string/antenatalTest"/>
         <item
             android:id="@+id/nav_immunization"
             android:icon="@drawable/ic_injection_black_24dp"
             android:title="@string/immunization"/>
         <item
-            android:id="@+id/nav_reminder"
-            android:icon="@drawable/ic_notifications_black_24dp"
-            android:title="@string/reminders"/>
-        <item
             android:id="@+id/nav_nutrition"
             android:icon="@drawable/ic_restaurant_black_24dp"
             android:title="@string/nutrition"/>
+        <item
+            android:id="@+id/nav_appointment"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="@string/appointments"/>
     </group>
-
     <item
         android:menuCategory="secondary"
-        android:title="@string/more"
-        >
+        android:title="@string/more">
         <menu>
-            <item
+            <!--<item
                 android:id="@+id/nav_hospital_talk"
                 android:icon="@drawable/ic_call_black_24dp"
                 android:title="@string/hospital_talk"/>
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_menu_manage"
-                android:title="@string/action_settings"/>
+                android:title="@string/action_settings"/>-->
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_exit_to_app_black_24dp"

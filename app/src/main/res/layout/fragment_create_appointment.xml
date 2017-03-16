@@ -1,0 +1,122 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context="com.digzdigital.reminderapp.fragment.addCourse.AddCourseFragment">
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mtf_animationDuration="1000"
+            app:mtf_cardCollapsedHeight="4dp"
+            android:layout_marginBottom="6dp"
+            app:mtf_image="@drawable/ic_book_black_24dp">
+
+            <EditText
+                android:id="@+id/patientName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Patient Name"
+                android:inputType="textCapWords"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"/>
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <fr.ganfra.materialspinner.MaterialSpinner
+            android:id="@+id/hospitalSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingBottom="8dp"
+            app:ms_alignLabels="false"
+            app:ms_arrowSize="16dp"
+            app:ms_baseColor="@color/white"
+            app:ms_floatingLabelText="Hospital"
+            app:ms_hint="Hospital"
+            app:ms_multiline="false"
+            app:ms_thickness="2dp"/>
+
+        <fr.ganfra.materialspinner.MaterialSpinner
+            android:id="@+id/doctorSelect"
+            android:layout_width="match_parent"
+            android:visibility="invisible"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingBottom="8dp"
+            app:ms_alignLabels="false"
+            app:ms_arrowSize="16dp"
+            app:ms_baseColor="@color/white"
+            app:ms_floatingLabelText="Doctor"
+            app:ms_hint="Doctor"
+            app:ms_multiline="false"
+            app:ms_thickness="2dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical">
+
+            <Button
+                android:id="@+id/appointmentTime"
+                style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time: 8:00 AM"
+                android:textColor="#fff"
+                android:visibility="invisible"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText"/>
+
+            <Button
+                android:id="@+id/appointmentDate"
+                style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
+                android:visibility="invisible"
+                android:layout_height="wrap_content"
+                android:text="Date: 25th September, 2017"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/cancel"
+                style="@style/Base.Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText"/>
+
+            <Button
+                android:id="@+id/save"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="0dp"
+                android:visibility="invisible"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

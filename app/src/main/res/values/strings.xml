@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Health App</string>
     <string name="home_title">ANTE-NATAL CARE APP</string>
-    <string name="prescription">Prescription</string>
+    <string name="antenatalTest">Antenatal Tests</string>
     <string name="immunization">Immunization</string>
     <string name="food_intake">Food Intake</string>
     <string name="emergency">Emergency</string>
@@ -18,14 +18,28 @@
     <string name="action_settings">Settings</string>
     <string name="sign_out">Sign Out</string>
     <string name="more">More</string>
-    <string name="reminders">Reminders</string>
+    <string name="mother">Mother</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_link_to_register">Not a member? Get registered in now!</string>
+    <string name="btn_link_to_login">Already registered. Login Me!</string>
+    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+    <string name="btn_forgot_password">Forgot your password?</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="hint_new_email">New Email</string>
+    <string name="btn_change">Change</string>
+    <string name="btn_send">Send</string>
+    <string name="btn_remove">Remove</string>
+    <string name="btn_sign_out">Sign Out</string>
+    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="forgot_password_msg">We just need your registered Email address to send you password reset instructions.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="artesunate">Artesunate</string>
     <string name="time">16:22</string>
     <string name="dose_amount">1 tablet</string>
-    <string name="date">Dec 4</string>
+    <string name="month">Dec 4</string>
     <string name="immunizationDrug">EVH Immunization</string>
     <string name="nutrition">Nutrition</string>
     <string name="breakfast_text">
@@ -46,4 +60,9 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="appointments">Appointment</string>
+    <string name="patient_name">Patient Name</string>
 </resources>
