@@ -2,6 +2,7 @@ package com.digzdigital.healthapp.fragment.antenatal;
 
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -46,6 +47,7 @@ public class AntenatalTestsFragment extends Fragment {
     private AntenatalTestsListAdapter antenatalTestsListAdapter;
     private ArrayList<AntenatalTest> antenatalTests;
     private FirebaseHelper firebaseHelper;
+    private ProgressDialog progressDialog;
     private DatabaseReference databaseReference;
 
     public AntenatalTestsFragment() {
@@ -88,10 +90,11 @@ public class AntenatalTestsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_default, container, false);
         rv = (RecyclerView) view.findViewById(R.id.rv);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("tests");
+        showProgressDialog("Loading", "Loading tests");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                antenatalTests = null;
+                // antenatalTests = null;
                 antenatalTests = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     AntenatalTest antenatalTest = new AntenatalTest();
@@ -104,6 +107,7 @@ public class AntenatalTestsFragment extends Fragment {
 
                     antenatalTests.add(antenatalTest);
                 }
+                dismissProgressDialog();
                 doRest();
             }
 
@@ -115,13 +119,23 @@ public class AntenatalTestsFragment extends Fragment {
         return view;
     }
 
+    public void showProgressDialog(String title, String message) {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle(title);
+        progressDialog.setMessage(message);
+        progressDialog.show();
+    }
+
+    public void dismissProgressDialog() {
+        progressDialog.dismiss();
+    }
     private void doRest() {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
         // antenatalTests = firebaseHelper.getAntenatalTests();
         //
         if (antenatalTests == null) return;
-        if (antenatalTests.size() > 0) return;
+        if (antenatalTests.size() == 0) return;
         antenatalTestsListAdapter = new AntenatalTestsListAdapter(antenatalTests);
         rv.setAdapter(antenatalTestsListAdapter);
 

@@ -127,7 +127,7 @@ public class ImmunizationFragment extends Fragment {
         rv.setLayoutManager(llm);
 
         if (immunizations == null) return;
-        if (immunizations.size() > 0) return;
+        if (immunizations.size() == 0) return;
         immunizationListAdapter = new ImmunizationListAdapter(immunizations);
         rv.setAdapter(immunizationListAdapter);
 
