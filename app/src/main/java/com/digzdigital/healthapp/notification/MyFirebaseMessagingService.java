@@ -22,8 +22,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
         if (remoteMessage.getNotification() != null) {
-            // String messageBody = remoteMessage.getNotification().getBody();
-            String messageBody = "New Reminder alert";
+            String messageBody = remoteMessage.getNotification().getBody();
+            // String messageBody = "New Reminder alert";
             sendNotification(messageBody);
         }
     }

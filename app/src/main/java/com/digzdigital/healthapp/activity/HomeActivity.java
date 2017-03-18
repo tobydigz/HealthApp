@@ -28,6 +28,7 @@ import com.digzdigital.healthapp.fragment.antenatal.AntenatalTestsFragment;
 import com.digzdigital.healthapp.fragment.appointment.create_edit.CreateAppointmentFragment;
 import com.digzdigital.healthapp.fragment.appointment.view.AppointmentViewFragment;
 import com.digzdigital.healthapp.fragment.immunization.ImmunizationFragment;
+import com.digzdigital.healthapp.fragment.mother.MotherFragment;
 import com.digzdigital.healthapp.fragment.nutrition.NutritionFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,7 +49,7 @@ public class HomeActivity extends AppCompatActivity
     @Inject
     public FirebaseHelper firebaseHelper;
     private FragmentManager fragmentManager;
-    private Fragment antenatalTestsFragment, immunizationFragment, nutritionFragment, appointmentFragment;
+    private Fragment antenatalTestsFragment, immunizationFragment, nutritionFragment, appointmentFragment, motherFragment;
     private Boolean firstTime = null;
     private String jsonString;
     private FirebaseAuth auth;
@@ -60,7 +61,7 @@ public class HomeActivity extends AppCompatActivity
             if (firebaseUser == null) {
                 switchActivity(LoginActivity.class);
             } else {
-                FirebaseMessaging.getInstance().subscribeToTopic("reminders/" + firebaseUser.getUid());
+                FirebaseMessaging.getInstance().subscribeToTopic("reminders_" + firebaseUser.getUid());
             }
         }
     };
@@ -78,7 +79,7 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         auth = FirebaseAuth.getInstance();
-        // TODO: 04/12/2016 Emergency is fab
+        auth.addAuthStateListener(listener);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +102,7 @@ public class HomeActivity extends AppCompatActivity
         fragmentManager = getFragmentManager();
         antenatalTestsFragment = AntenatalTestsFragment.newInstance("a", "b");
         fragmentManager.beginTransaction()
-                .replace(R.id.contentFrame, antenatalTestsFragment)
+                .replace(R.id.contentFrame, getAntenatalTestsFragment())
                 .addToBackStack(null)
                 .commit();
 
@@ -165,19 +166,23 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
             auth.signOut();
         } else if (id == R.id.nav_appointment) {
-
             switchFragmentToStack(getAppointmentFragment());
         } else if (id == R.id.nav_antenatal_tests) {
-
             switchFragmentToStack(getAntenatalTestsFragment());
         } else if (id == R.id.nav_nutrition) {
-
             switchFragmentToStack(getNutritionFragment());
+        }else if (id == R.id.nav_mother){
+            switchFragmentToStack(getMotherFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private Fragment getMotherFragment() {
+        if (motherFragment == null)motherFragment = MotherFragment.newInstance(firebaseUser.getUid(), "");
+        return motherFragment;
     }
 
 

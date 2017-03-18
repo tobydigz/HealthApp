@@ -8,15 +8,15 @@ import java.util.Date;
 
 public class Immunization {
 
-    private int id;
+    private String id;
     private String name;
     private int month;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

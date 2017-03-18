@@ -65,4 +65,6 @@
     <string name="hint_password">Password</string>
     <string name="appointments">Appointment</string>
     <string name="patient_name">Patient Name</string>
+    <string name="testSample">Electronic Fetal Sample</string>
+    <string name="test_time">2nd Trimester(week 13 - 27)</string>
 </resources>

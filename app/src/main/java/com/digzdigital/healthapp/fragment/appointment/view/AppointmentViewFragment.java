@@ -32,7 +32,7 @@ import java.util.ArrayList;
  * Use the {@link AppointmentViewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AppointmentViewFragment extends Fragment {
+public class AppointmentViewFragment extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -88,7 +88,7 @@ private ArrayList<Appointment> appointments;
        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_appointment_view, container, false);
 
         firebaseHelper.queryForAppointment(userId);
-        // binding.
+        binding.newAppointment.setOnClickListener(this);
         return binding.getRoot();
     }
 
@@ -142,6 +142,11 @@ private ArrayList<Appointment> appointments;
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onFirebaseEvent(FirebaseEvent event){
         if (event.type == EventType.APPOINTMENTS)doRest();
+    }
+
+    @Override
+    public void onClick(View v) {
+        mListener.onCreateAppointmentClicked();
     }
 
     /**

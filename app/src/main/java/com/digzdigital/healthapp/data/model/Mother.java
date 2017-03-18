@@ -13,13 +13,13 @@ import dagger.Module;
  */
 
 public class Mother {
-    private String name;
-    private int age;
-    private String dateOfBirth;
     private ArrayList<Child> children;
+    private int age;
     private BloodGroup bloodGroup;
     private BloodType bloodType;
+    private String dateOfBirth;
     private boolean hasHadCS;
+    private String name;
 
     public Mother(){
 

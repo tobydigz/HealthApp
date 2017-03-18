@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.digzdigital.healthapp.R;
+import com.digzdigital.healthapp.activity.HomeActivity;
 import com.digzdigital.healthapp.data.FirebaseHelper;
 import com.digzdigital.healthapp.data.model.childcare.Immunization;
 import com.digzdigital.healthapp.eventbus.EventType;
@@ -79,6 +80,8 @@ public class ImmunizationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_default, container, false);
         rv = (RecyclerView) view.findViewById(R.id.rv);
+        HomeActivity activity = (HomeActivity)getActivity();
+        firebaseHelper = activity.getFirebaseHelper();
         firebaseHelper.queryForImmunizations();
         return view;
     }
@@ -89,7 +92,7 @@ public class ImmunizationFragment extends Fragment {
     }
 
     private void doRest() {
-        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
 
         if (immunizations == null) return;

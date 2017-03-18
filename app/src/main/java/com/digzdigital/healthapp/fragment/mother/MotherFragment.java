@@ -1,6 +1,7 @@
 package com.digzdigital.healthapp.fragment.mother;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class MotherFragment extends Fragment {
     private Mother mother = new Mother();
     private OnFragmentInteractionListener listener;
     private ChildListAdapter childListAdapter;
+    private ProgressDialog progressDialog;
 
     public MotherFragment() {
         // Required empty public constructor
@@ -68,6 +70,16 @@ public class MotherFragment extends Fragment {
         return fragment;
     }
 
+    public void showProgressDialog(String title, String message) {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle(title);
+        progressDialog.setMessage(message);
+        progressDialog.show();
+    }
+
+    public void dismissProgressDialog() {
+        progressDialog.dismiss();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +96,8 @@ public class MotherFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_mother, container, false);
-        updateUI();
+        // updateUI();
+        showProgressDialog("Loading", "Getting Mother details");
         firebaseHelper.queryForMother(userId);
         return binding.getRoot();
     }
@@ -129,6 +142,7 @@ public class MotherFragment extends Fragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onFirebaseEvent(FirebaseEvent event){
+        dismissProgressDialog();
         if (event.type == EventType.MOTHER)loadMother();
     }
 
