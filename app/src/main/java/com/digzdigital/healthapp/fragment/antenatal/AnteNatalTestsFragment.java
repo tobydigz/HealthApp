@@ -97,7 +97,7 @@ public class AntenatalTestsFragment extends Fragment {
                     AntenatalTest antenatalTest = new AntenatalTest();
                     String name = (String)snapshot.child("name").getValue();
                     String id = (String)snapshot.child("id").getValue();
-                    long trimester = (Long) snapshot.child("trimsester").getValue();
+                    Long trimester = (Long) snapshot.child("trimester").getValue();
                     antenatalTest.setName(name);
                     antenatalTest.setId(id);
                     antenatalTest.setTrimester(trimester);
