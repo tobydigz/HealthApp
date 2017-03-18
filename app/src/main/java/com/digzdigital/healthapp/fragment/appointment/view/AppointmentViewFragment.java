@@ -17,6 +17,10 @@ import com.digzdigital.healthapp.data.model.appointment.Appointment;
 import com.digzdigital.healthapp.databinding.FragmentAppointmentViewBinding;
 import com.digzdigital.healthapp.eventbus.EventType;
 import com.digzdigital.healthapp.eventbus.FirebaseEvent;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -47,6 +51,7 @@ private ArrayList<Appointment> appointments;
     private FragmentAppointmentViewBinding binding;
     private OnFragmentInteractionListener mListener;
     private HomeActivity activity;
+    private DatabaseReference reference;
 
     public AppointmentViewFragment() {
         // Required empty public constructor
@@ -87,8 +92,25 @@ private ArrayList<Appointment> appointments;
         // Inflate the layout for this fragment
        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_appointment_view, container, false);
 
-        firebaseHelper.queryForAppointment(userId);
+        reference = firebaseHelper.queryForAppointment(userId);
         binding.newAppointment.setOnClickListener(this);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                appointments = null;
+                appointments = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Appointment appointment = snapshot.getValue(Appointment.class);
+                    appointments.add(appointment);
+                }
+                doRest();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         return binding.getRoot();
     }
 
@@ -112,7 +134,7 @@ private ArrayList<Appointment> appointments;
     private void doRest() {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         binding.appointmentRv.setLayoutManager(llm);
-        appointments = firebaseHelper.getAppointments();
+        // appointments = firebaseHelper.getAppointments();
         //
         if (appointments == null) return;
         if (appointments.size() > 0) return;

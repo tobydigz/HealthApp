@@ -15,12 +15,18 @@ import com.digzdigital.healthapp.data.FirebaseHelper;
 import com.digzdigital.healthapp.data.model.childcare.Immunization;
 import com.digzdigital.healthapp.eventbus.EventType;
 import com.digzdigital.healthapp.eventbus.FirebaseEvent;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 /**
@@ -41,6 +47,7 @@ public class ImmunizationFragment extends Fragment {
     private ImmunizationListAdapter immunizationListAdapter;
     private ArrayList<Immunization> immunizations;
     private FirebaseHelper firebaseHelper;
+    private DatabaseReference reference;
 
 
     public ImmunizationFragment() {
@@ -82,13 +89,37 @@ public class ImmunizationFragment extends Fragment {
         rv = (RecyclerView) view.findViewById(R.id.rv);
         HomeActivity activity = (HomeActivity)getActivity();
         firebaseHelper = activity.getFirebaseHelper();
-        firebaseHelper.queryForImmunizations();
+        reference = FirebaseDatabase.getInstance().getReference().child("immunizations");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                immunizations = null;
+                immunizations = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Immunization immunization = new Immunization();
+                    String id = (String)snapshot.child("id").getValue();
+                    String name = (String)snapshot.child("name").getValue();
+                    long month = (Long)snapshot.child("month").getValue();
+                    immunization.setName(name);
+                    immunization.setId(id);
+                    immunization.setMonth(month);
+                    immunizations.add(immunization);
+                }
+                doRest();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         return view;
     }
 
     private void loadImmunizations() {
-        immunizations = firebaseHelper.getImmunizations();
-        doRest();
+        // immunizations = firebaseHelper.getImmunizations();
+        // doRest();
     }
 
     private void doRest() {
@@ -123,6 +154,6 @@ public class ImmunizationFragment extends Fragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onFirebaseEvent(FirebaseEvent event) {
-        if (event.type == EventType.IMMUNIZATIONS) loadImmunizations();
+        // if (event.type == EventType.IMMUNIZATIONS) loadImmunizations();
     }
 }

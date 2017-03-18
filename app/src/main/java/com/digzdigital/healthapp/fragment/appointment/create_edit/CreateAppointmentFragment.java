@@ -19,6 +19,10 @@ import com.digzdigital.healthapp.data.model.appointment.Hospital;
 import com.digzdigital.healthapp.databinding.FragmentCreateAppointmentBinding;
 import com.digzdigital.healthapp.eventbus.EventType;
 import com.digzdigital.healthapp.eventbus.FirebaseEvent;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -54,6 +58,7 @@ public class CreateAppointmentFragment extends Fragment implements View.OnClickL
     private ArrayList<Hospital> hospitals;
     private ArrayList<Doctor> doctors;
     private Date date;
+    private DatabaseReference databaseReference;
     private Calendar calendar = new GregorianCalendar();
 
     private OnFragmentInteractionListener listener;
@@ -105,7 +110,23 @@ public class CreateAppointmentFragment extends Fragment implements View.OnClickL
             updateViews();
         }
         if (isNew) {
-            firebaseHelper.queryForHospitals();
+            databaseReference = firebaseHelper.queryForHospitals();
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    hospitals = new ArrayList<>();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Hospital hospital = snapshot.getValue(Hospital.class);
+                        hospitals.add(hospital);
+                    }
+                    loadHospitals();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
         return binding.getRoot();
     }
@@ -182,12 +203,12 @@ public class CreateAppointmentFragment extends Fragment implements View.OnClickL
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onFirebaseEvent(FirebaseEvent event) {
-        if (event.type == EventType.HOSPITALS) loadHospitals();
-        if (event.type == EventType.DOCTORS) loadDoctors();
+        // if (event.type == EventType.HOSPITALS)
+        // if (event.type == EventType.DOCTORS) loadDoctors();
     }
 
     private void loadDoctors() {
-        doctors = firebaseHelper.getDoctors();
+        // doctors = firebaseHelper.getDoctors();
         String[] ITEMS  = new String[doctors.size()];
         for (int i = 0; i < doctors.size(); i++) {
             ITEMS[i] = doctors.get(i).getName();
@@ -199,7 +220,7 @@ public class CreateAppointmentFragment extends Fragment implements View.OnClickL
     }
 
     private void loadHospitals() {
-        hospitals = firebaseHelper.getHospitals();
+        // hospitals = firebaseHelper.getHospitals();
         String[] ITEMS  = new String[hospitals.size()];
         for (int i = 0; i < hospitals.size(); i++) {
             ITEMS[i] = hospitals.get(i).getName();
@@ -218,7 +239,23 @@ public class CreateAppointmentFragment extends Fragment implements View.OnClickL
         appointment.setHospitalAddress(hospital.getAddress());
         appointment.setHospitalId(hospital.getId());
 
-        firebaseHelper.queryForDoctors(hospital.getId());
+        databaseReference = firebaseHelper.queryForDoctors(hospital.getId());
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                doctors = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Doctor doctor = snapshot.getValue(Doctor.class);
+                    doctors.add(doctor);
+                }
+                loadDoctors();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void onDoctorSelected(int position) {

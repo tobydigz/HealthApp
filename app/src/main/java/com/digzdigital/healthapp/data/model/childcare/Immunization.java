@@ -10,7 +10,7 @@ public class Immunization {
 
     private String id;
     private String name;
-    private int month;
+    private long month;
 
     public String getId() {
         return id;
@@ -28,11 +28,11 @@ public class Immunization {
         this.name = name;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(long month) {
         this.month = month;
     }
 
-    public int getMonth(){
+    public long getMonth(){
         return month;
     }
 

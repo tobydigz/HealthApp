@@ -7,6 +7,7 @@ import com.digzdigital.healthapp.data.model.appointment.Doctor;
 import com.digzdigital.healthapp.data.model.appointment.Hospital;
 import com.digzdigital.healthapp.data.model.childcare.Immunization;
 import com.digzdigital.healthapp.data.model.mothercare.AntenatalTest;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 
@@ -15,26 +16,24 @@ import java.util.ArrayList;
  */
 
 public interface FirebaseHelper {
-    void queryForAntenatalTests();
+    DatabaseReference queryForAntenatalTests();
     ArrayList<AntenatalTest> getAntenatalTests();
 
-    void queryForImmunizations();
+    DatabaseReference queryForImmunizations();
     ArrayList<Immunization> getImmunizations();
 
-    void queryForMother(String userId);
+    DatabaseReference queryForMother(String userId);
     Mother getMother();
 
-    void queryForChildren(String userId);
-    ArrayList<Child> getChildren();
 
-    void queryForHospitals();
+    DatabaseReference queryForHospitals();
     ArrayList<Hospital> getHospitals();
 
-    void queryForDoctors(String hospitalId);
+    DatabaseReference queryForDoctors(String hospitalId);
     ArrayList<Doctor> getDoctors();
 
     void createAppointment(Appointment appointment, String userId);
     void updateAppointment(Appointment appointment, String userId);
-    void queryForAppointment(String userId);
+    DatabaseReference queryForAppointment(String userId);
     ArrayList<Appointment> getAppointments();
 }

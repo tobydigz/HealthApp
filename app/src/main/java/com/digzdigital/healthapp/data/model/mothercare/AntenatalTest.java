@@ -7,7 +7,7 @@ public class AntenatalTest {
     }
 
     private String id;
-    private int trimester;
+    private long trimester;
     private String name;
 
     public String getId() {
@@ -20,7 +20,8 @@ public class AntenatalTest {
 
     public String getTrimester() {
         String trimester = "";
-        switch (this.trimester){
+        int compare = (int) this.trimester;
+        switch (compare){
             case 0:
                 trimester = "1st Trimester (1 - 12 weeks)";
                 break;
@@ -34,7 +35,7 @@ public class AntenatalTest {
         return trimester;
     }
 
-    public void setTrimester(int trimester) {
+    public void setTrimester(long trimester) {
         this.trimester = trimester;
     }
 

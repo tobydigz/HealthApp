@@ -34,24 +34,8 @@ public class AppFirebaseHelper implements FirebaseHelper {
     }
 
     @Override
-    public void queryForAntenatalTests() {
-        databaseReference.child("tests").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                antenatalTests = null;
-                antenatalTests = new ArrayList<>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    AntenatalTest antenatalTest = snapshot.getValue(AntenatalTest.class);
-                    antenatalTests.add(antenatalTest);
-                }
-                postEvent(EventType.TESTS);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+    public DatabaseReference queryForAntenatalTests() {
+       return databaseReference.child("tests");
     }
 
     @Override
@@ -60,25 +44,8 @@ public class AppFirebaseHelper implements FirebaseHelper {
     }
 
     @Override
-    public void queryForImmunizations() {
-        databaseReference.child("immunizations").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                immunizations = null;
-                immunizations = new ArrayList<>();
-
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Immunization immunization = snapshot.getValue(Immunization.class);
-                    immunizations.add(immunization);
-                }
-                postEvent(EventType.IMMUNIZATIONS);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+    public DatabaseReference queryForImmunizations() {
+        return databaseReference.child("immunizations");
     }
 
     @Override
@@ -87,19 +54,8 @@ public class AppFirebaseHelper implements FirebaseHelper {
     }
 
     @Override
-    public void queryForMother(String id) {
-        databaseReference.child("mothers").child(id).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mother = dataSnapshot.getValue(Mother.class);
-                postEvent(EventType.MOTHER);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+    public DatabaseReference queryForMother(String id) {
+        return databaseReference.child("mothers").child(id);
     }
 
     @Override
@@ -107,50 +63,10 @@ public class AppFirebaseHelper implements FirebaseHelper {
         return mother;
     }
 
-    @Override
-    public void queryForChildren(String id) {
-        databaseReference.child("mothers").child(id).child("children").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                children = null;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Child child = snapshot.getValue(Child.class);
-                    children.add(child);
-                }
-                postEvent(EventType.CHILDREN);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     @Override
-    public ArrayList<Child> getChildren() {
-        return children;
-    }
-
-    @Override
-    public void queryForHospitals() {
-        databaseReference.child("hospitals").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                hospitals = null;
-                hospitals = new ArrayList<>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Hospital hospital = snapshot.getValue(Hospital.class);
-                    hospitals.add(hospital);
-                }
-                postEvent(EventType.HOSPITALS);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+    public DatabaseReference queryForHospitals() {
+        return databaseReference.child("hospitals");
     }
 
     @Override
@@ -159,24 +75,8 @@ public class AppFirebaseHelper implements FirebaseHelper {
     }
 
     @Override
-    public void queryForDoctors(String hospitalId) {
-        databaseReference.child("hospitals").child(hospitalId).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                doctors = null;
-                doctors = new ArrayList<>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Doctor doctor = snapshot.getValue(Doctor.class);
-                    doctors.add(doctor);
-                }
-                postEvent(EventType.DOCTORS);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+    public DatabaseReference queryForDoctors(String hospitalId) {
+        return databaseReference.child("hospitals");
     }
 
     @Override
@@ -198,24 +98,8 @@ public class AppFirebaseHelper implements FirebaseHelper {
     }
 
     @Override
-    public void queryForAppointment(String userId) {
-        databaseReference.child(userId).child("appointments").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                appointments = null;
-                appointments = new ArrayList<>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Appointment appointment = snapshot.getValue(Appointment.class);
-                    appointments.add(appointment);
-                }
-                postEvent(EventType.APPOINTMENTS);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+    public DatabaseReference queryForAppointment(String userId) {
+        return databaseReference.child(userId).child("appointments");
     }
 
     @Override

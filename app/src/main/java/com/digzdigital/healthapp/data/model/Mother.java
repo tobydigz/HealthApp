@@ -14,9 +14,9 @@ import dagger.Module;
 
 public class Mother {
     private ArrayList<Child> children;
-    private int age;
-    private BloodGroup bloodGroup;
-    private BloodType bloodType;
+    private long age;
+    private String bloodGroup;
+    private String bloodType;
     private String dateOfBirth;
     private boolean hasHadCS;
     private String name;
@@ -33,11 +33,11 @@ public class Mother {
         this.name = name;
     }
 
-    public int getAge() {
+    public long getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(long age) {
         this.age = age;
     }
 
@@ -61,18 +61,18 @@ public class Mother {
         return children.size();
     }
     public String getBloodGroup() {
-        return bloodGroup.getName();
+        return bloodGroup;
     }
 
-    public void setBloodGroup(BloodGroup bloodGroup) {
+    public void setBloodGroup(String bloodGroup) {
         this.bloodGroup = bloodGroup;
     }
 
     public String getBloodType() {
-        return bloodType.name();
+        return bloodType;
     }
 
-    public void setBloodType(BloodType bloodType) {
+    public void setBloodType(String bloodType) {
         this.bloodType = bloodType;
     }
 

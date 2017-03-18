@@ -15,6 +15,11 @@ import com.digzdigital.healthapp.data.FirebaseHelper;
 import com.digzdigital.healthapp.data.model.mothercare.AntenatalTest;
 import com.digzdigital.healthapp.eventbus.EventType;
 import com.digzdigital.healthapp.eventbus.FirebaseEvent;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -41,6 +46,7 @@ public class AntenatalTestsFragment extends Fragment {
     private AntenatalTestsListAdapter antenatalTestsListAdapter;
     private ArrayList<AntenatalTest> antenatalTests;
     private FirebaseHelper firebaseHelper;
+    private DatabaseReference databaseReference;
 
     public AntenatalTestsFragment() {
         // Required empty public constructor
@@ -81,14 +87,38 @@ public class AntenatalTestsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_default, container, false);
         rv = (RecyclerView) view.findViewById(R.id.rv);
-        firebaseHelper.queryForAntenatalTests();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("tests");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                antenatalTests = null;
+                antenatalTests = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    AntenatalTest antenatalTest = new AntenatalTest();
+                    String name = (String)snapshot.child("name").getValue();
+                    String id = (String)snapshot.child("id").getValue();
+                    long trimester = (Long) snapshot.child("trimsester").getValue();
+                    antenatalTest.setName(name);
+                    antenatalTest.setId(id);
+                    antenatalTest.setTrimester(trimester);
+
+                    antenatalTests.add(antenatalTest);
+                }
+                doRest();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         return view;
     }
 
     private void doRest() {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
-        antenatalTests = firebaseHelper.getAntenatalTests();
+        // antenatalTests = firebaseHelper.getAntenatalTests();
         //
         if (antenatalTests == null) return;
         if (antenatalTests.size() > 0) return;
@@ -117,6 +147,6 @@ public class AntenatalTestsFragment extends Fragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onFirebaseEvent(FirebaseEvent event){
-        if (event.type == EventType.TESTS)doRest();
+        // if (event.type == EventType.TESTS)doRest();
     }
 }

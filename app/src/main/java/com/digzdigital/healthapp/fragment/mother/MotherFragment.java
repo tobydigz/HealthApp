@@ -13,15 +13,22 @@ import android.view.ViewGroup;
 import com.digzdigital.healthapp.R;
 import com.digzdigital.healthapp.activity.HomeActivity;
 import com.digzdigital.healthapp.data.FirebaseHelper;
+import com.digzdigital.healthapp.data.model.Child;
 import com.digzdigital.healthapp.data.model.Mother;
 import com.digzdigital.healthapp.databinding.FragmentMotherBinding;
 import com.digzdigital.healthapp.eventbus.EventType;
 import com.digzdigital.healthapp.eventbus.FirebaseEvent;
 import com.digzdigital.healthapp.fragment.immunization.ImmunizationListAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,6 +54,8 @@ public class MotherFragment extends Fragment {
     private OnFragmentInteractionListener listener;
     private ChildListAdapter childListAdapter;
     private ProgressDialog progressDialog;
+    private DatabaseReference reference;
+    private ArrayList<Child> children;
 
     public MotherFragment() {
         // Required empty public constructor
@@ -98,13 +107,43 @@ public class MotherFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_mother, container, false);
         // updateUI();
         showProgressDialog("Loading", "Getting Mother details");
-        firebaseHelper.queryForMother(userId);
+        reference = firebaseHelper.queryForMother(userId);
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mother = new Mother();
+                String name = (String )dataSnapshot.child("name").getValue();
+                mother.setName(name);
+                Long age = (Long) dataSnapshot.child("age").getValue();
+                mother.setAge(age);
+                String bloodGroup = (String )dataSnapshot.child("bloodGroup").getValue();
+                mother.setBloodGroup(bloodGroup);
+                String bloodType = (String )dataSnapshot.child("bloodType").getValue();
+                mother.setBloodType(bloodType);
+                Boolean cs = (Boolean)dataSnapshot.child("hasHadCS").getValue();
+                mother.setHasHadCS(cs);
+                String dateOfBirth = (String )dataSnapshot.child("dateOfBirth").getValue();
+                mother.setDateOfBirth(dateOfBirth);
+                ArrayList<Child> children = new ArrayList<>();
+                mother.setChildren(children);
+                updateUI();
+                dismissProgressDialog();
+                doRest();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         return binding.getRoot();
     }
 
+
+
     private void updateUI() {
         binding.motherName.setText(mother.getName());
-        binding.motherAge.setText(mother.getAge());
+        binding.motherAge.setText(mother.getAge() + "yrs");
         binding.motherBloodGroup.setText(mother.getBloodGroup());
         binding.motherBloodType.setText(mother.getBloodType());
         binding.motherDOB.setText(mother.getDateOfBirth());
