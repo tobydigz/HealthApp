@@ -7,30 +7,10 @@ import android.os.Parcelable;
  * Created by Digz on 10/03/2017.
  */
 
-public class Hospital implements Parcelable{
-    private String id;
-    private String name;
-    private String address;
-
-    public Hospital() {
-    }
-
-    public Hospital(Parcel in){
-        this.id = in.readString();
-        this.name = in.readString();
-        this.address = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i){
-parcel.writeString(id);
-        parcel.writeString(name);
-        parcel.writeString(address);
-    }
-
-    public static final Parcelable.Creator<Hospital> CREATOR = new Parcelable.Creator<Hospital>(){
+public class Hospital implements Parcelable {
+    public static final Parcelable.Creator<Hospital> CREATOR = new Parcelable.Creator<Hospital>() {
         @Override
-        public Hospital createFromParcel(Parcel parcel){
+        public Hospital createFromParcel(Parcel parcel) {
             return new Hospital(parcel);
         }
 
@@ -40,9 +20,28 @@ parcel.writeString(id);
         }
 
     };
+    private String id;
+    private String name;
+    private String address;
+
+    public Hospital() {
+    }
+
+    public Hospital(Parcel in) {
+        this.id = in.readString();
+        this.name = in.readString();
+        this.address = in.readString();
+    }
 
     @Override
-    public int describeContents(){
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(name);
+        parcel.writeString(address);
+    }
+
+    @Override
+    public int describeContents() {
         return hashCode();
     }
 

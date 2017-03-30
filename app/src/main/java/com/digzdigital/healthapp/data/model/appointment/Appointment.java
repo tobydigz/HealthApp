@@ -19,8 +19,8 @@ public class Appointment implements Parcelable{
     private String hospitalName;
     private String hospitalId;
     private String hospitalAddress;
-    private Date date;
-    private boolean approved;
+    private Date date = new Date();
+    private int approved;
 
     public Appointment() {
     }
@@ -35,6 +35,7 @@ public class Appointment implements Parcelable{
         this.hospitalId = in.readString();
         this.hospitalAddress = in.readString();
         this.date.setTime(in.readLong());
+        this.approved = in.readInt();
     }
 
     @Override
@@ -47,6 +48,7 @@ public class Appointment implements Parcelable{
         parcel.writeString(hospitalId);
         parcel.writeString(hospitalAddress);
         parcel.writeLong(date.getTime());
+        parcel.writeInt(approved);
     }
 
     public static final Parcelable.Creator<Appointment> CREATOR = new Parcelable.Creator<Appointment>(){
@@ -139,11 +141,12 @@ public class Appointment implements Parcelable{
     }
 
     public String getStatus() {
-        if (approved) return "Approved";
+        if (approved == 1) return "Approved";
         return "Unapproved";
     }
 
     public void setApproved(boolean approved) {
-        this.approved = approved;
+        if (approved)this.approved = 1;
+        else this.approved = 0;
     }
 }

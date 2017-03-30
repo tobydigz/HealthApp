@@ -31,7 +31,6 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AppointmentViewFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link AppointmentViewFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -49,8 +48,7 @@ private ArrayList<Appointment> appointments;
     private FirebaseHelper firebaseHelper;
     private AppointmentListAdapter appointmentListAdapter;
     private FragmentAppointmentViewBinding binding;
-    private OnFragmentInteractionListener mListener;
-    private HomeActivity activity;
+    private HomeActivity home;
     private DatabaseReference reference;
 
     public AppointmentViewFragment() {
@@ -82,8 +80,8 @@ private ArrayList<Appointment> appointments;
             userId = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        HomeActivity activity = (HomeActivity)getActivity();
-        firebaseHelper = activity.getFirebaseHelper();
+        home = (HomeActivity)getActivity();
+        firebaseHelper = home.getFirebaseHelper();
     }
 
     @Override
@@ -114,22 +112,7 @@ private ArrayList<Appointment> appointments;
         return binding.getRoot();
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
 
     private void doRest() {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -168,21 +151,18 @@ private ArrayList<Appointment> appointments;
 
     @Override
     public void onClick(View v) {
-        mListener.onCreateAppointmentClicked();
+        home.onCreateAppointmentClicked();
     }
 
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
+     * to the home and potentially other fragments contained in that
+     * home.
      * <p>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onCreateAppointmentClicked();
-    }
+
 }

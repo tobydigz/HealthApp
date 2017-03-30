@@ -76,7 +76,7 @@ public class AppFirebaseHelper implements FirebaseHelper {
 
     @Override
     public DatabaseReference queryForDoctors(String hospitalId) {
-        return databaseReference.child("hospitals");
+        return databaseReference.child("hospitals").child(hospitalId).child("doctors");
     }
 
     @Override

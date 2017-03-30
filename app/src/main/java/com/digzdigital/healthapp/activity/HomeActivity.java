@@ -43,7 +43,7 @@ import javax.inject.Inject;
 
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, CreateAppointmentFragment.OnFragmentInteractionListener, AppointmentViewFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
 
 
     @Inject
@@ -54,6 +54,7 @@ public class HomeActivity extends AppCompatActivity
     private String jsonString;
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
+    private String uid = "abc";
     private FirebaseAuth.AuthStateListener listener = new FirebaseAuth.AuthStateListener() {
         @Override
         public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -61,6 +62,7 @@ public class HomeActivity extends AppCompatActivity
             if (firebaseUser == null) {
                 switchActivity(LoginActivity.class);
             } else {
+                uid = firebaseUser.getUid();
                 FirebaseMessaging.getInstance().subscribeToTopic("reminders_" + firebaseUser.getUid());
             }
         }
@@ -181,7 +183,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private Fragment getMotherFragment() {
-        if (motherFragment == null)motherFragment = MotherFragment.newInstance(firebaseUser.getUid(), "");
+        if (motherFragment == null)motherFragment = MotherFragment.newInstance(uid, "");
         return motherFragment;
     }
 
@@ -223,15 +225,13 @@ public class HomeActivity extends AppCompatActivity
                 .commit();
     }
 
-    @Override
     public void onButtonClicked() {
         switchFragment(getAppointmentFragment());
     }
 
-    @Override
     public void onCreateAppointmentClicked() {
         Appointment appointment = new Appointment();
-        appointment.setMotherId(firebaseUser.getUid());
+        appointment.setMotherId(uid);
         switchFragmentToStack(CreateAppointmentFragment.newInstance(appointment, true));
     }
 
@@ -255,7 +255,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public Fragment getAppointmentFragment() {
-        if (appointmentFragment == null) appointmentFragment = AppointmentViewFragment.newInstance(firebaseUser.getUid(), "");
+        if (appointmentFragment == null) appointmentFragment = AppointmentViewFragment.newInstance(uid, "");
         return appointmentFragment;
     }
 }
