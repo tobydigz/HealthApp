@@ -1,7 +1,6 @@
 package com.digzdigital.healthapp.fragment.appointment.create_edit;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import com.digzdigital.healthapp.data.model.appointment.Appointment;
 import com.digzdigital.healthapp.data.model.appointment.Doctor;
 import com.digzdigital.healthapp.data.model.appointment.Hospital;
 import com.digzdigital.healthapp.databinding.FragmentCreateAppointmentBinding;
-import com.digzdigital.healthapp.eventbus.EventType;
 import com.digzdigital.healthapp.eventbus.FirebaseEvent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -114,7 +112,10 @@ public class CreateAppointmentFragment extends Fragment implements View.OnClickL
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     hospitals = new ArrayList<>();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        Hospital hospital = snapshot.getValue(Hospital.class);
+                        Hospital hospital = new Hospital();
+                        hospital.setId((String) snapshot.child("id").getValue());
+                        hospital.setName((String) snapshot.child("name").getValue());
+                        hospital.setAddress((String) snapshot.child("address").getValue());
                         hospitals.add(hospital);
                     }
                     loadHospitals();
@@ -134,11 +135,12 @@ public class CreateAppointmentFragment extends Fragment implements View.OnClickL
     }
 
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.save:
+                loadPatientName();
+
                 home.onButtonClicked();
                 break;
             case R.id.cancel:
@@ -192,26 +194,56 @@ public class CreateAppointmentFragment extends Fragment implements View.OnClickL
 
     private void loadDoctors() {
         // doctors = firebaseHelper.getDoctors();
-        String[] ITEMS  = new String[doctors.size()];
+        String[] ITEMS = new String[doctors.size()];
         for (int i = 0; i < doctors.size(); i++) {
             ITEMS[i] = doctors.get(i).getName();
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, ITEMS);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.doctorSelect.setAdapter(adapter);
-        binding.doctorSelect.setOnItemSelectedListener(this);
+        final int[] noOfTimes = {0};
+        binding.doctorSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (noOfTimes[0] < 1) {
+                    noOfTimes[0]++;
+
+                } else onDoctorSelected(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void loadHospitals() {
         // hospitals = firebaseHelper.getHospitals();
-        String[] ITEMS  = new String[hospitals.size()];
+        String[] ITEMS = new String[hospitals.size()];
         for (int i = 0; i < hospitals.size(); i++) {
             ITEMS[i] = hospitals.get(i).getName();
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, ITEMS);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.hospitalSelect.setAdapter(adapter);
-        binding.hospitalSelect.setOnItemSelectedListener(this);
+        final int[] noOfTimes = {0};
+        binding.hospitalSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (noOfTimes[0] < 2) {
+                    noOfTimes[0]++;
+                } else {
+                    int stuff = position;
+                    onHospitalSelected(position);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -254,11 +286,12 @@ public class CreateAppointmentFragment extends Fragment implements View.OnClickL
 
     private void onDateSelected() {
         appointment.setDate(date);
-        loadPatientName();
+        binding.save.setVisibility(View.VISIBLE);
+
     }
 
     private void loadPatientName() {
-        String name = binding.patientName.getText().toString().trim();
+        String name = binding.patientName.getText().toString();
         if (name.isEmpty()) {
             binding.patientName.setError("Input a patient name");
             return;
@@ -302,21 +335,20 @@ public class CreateAppointmentFragment extends Fragment implements View.OnClickL
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-switch (view.getId()){
-    case R.id.hospitalSelect:
-        onHospitalSelected(position);
-        break;
-    case R.id.doctorSelect:
-        onDoctorSelected(position);
-        break;
-}
+        switch (view.getId()) {
+            case R.id.hospitalSelect:
+
+                break;
+            case R.id.doctorSelect:
+
+                break;
+        }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
 
 
 }

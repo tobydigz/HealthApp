@@ -28,6 +28,7 @@ import com.digzdigital.healthapp.fragment.antenatal.AntenatalTestsFragment;
 import com.digzdigital.healthapp.fragment.appointment.create_edit.CreateAppointmentFragment;
 import com.digzdigital.healthapp.fragment.appointment.view.AppointmentViewFragment;
 import com.digzdigital.healthapp.fragment.immunization.ImmunizationFragment;
+import com.digzdigital.healthapp.fragment.messages.MessagesFragment;
 import com.digzdigital.healthapp.fragment.mother.MotherFragment;
 import com.digzdigital.healthapp.fragment.nutrition.NutritionFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -134,7 +135,7 @@ public class HomeActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -155,7 +156,7 @@ public class HomeActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -175,6 +176,8 @@ public class HomeActivity extends AppCompatActivity
             switchFragmentToStack(getNutritionFragment());
         }else if (id == R.id.nav_mother){
             switchFragmentToStack(getMotherFragment());
+        }else if (id == R.id.nav_messages){
+            switchFragmentToStack(MessagesFragment.newInstance(firebaseUser.getUid()));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

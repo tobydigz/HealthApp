@@ -107,20 +107,20 @@ private ArrayList<Appointment> appointments;
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-            }
+}
         });
-        return binding.getRoot();
-    }
+                return binding.getRoot();
+                }
 
 
 
-    private void doRest() {
+private void doRest() {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         binding.appointmentRv.setLayoutManager(llm);
         // appointments = firebaseHelper.getAppointments();
         //
         if (appointments == null) return;
-        if (appointments.size() > 0) return;
+        if (appointments.size() == 0) return;
         appointmentListAdapter = new AppointmentListAdapter(appointments);
         binding.appointmentRv.setAdapter(appointmentListAdapter);
 

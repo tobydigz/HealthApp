@@ -88,18 +88,18 @@ public class AppFirebaseHelper implements FirebaseHelper {
     public void createAppointment(Appointment appointment, String userId) {
         String newKey = databaseReference.child("users").child(userId).child("appointments").push().getKey();
         appointment.setKey(newKey);
-        databaseReference.child("users").child(userId).child("appointments").child(newKey).setValue(appointment);
-        databaseReference.child("hospitals").child(appointment.getHospitalId()).child(appointment.getDoctorId()).setValue(appointment);
+        databaseReference.child("mothers").child(userId).child("appointments").child(newKey).setValue(appointment);
+        databaseReference.child("hospitals").child("appointments").child(appointment.getHospitalId()).child(appointment.getDoctorId()).setValue(appointment);
     }
 
     @Override
     public void updateAppointment(Appointment appointment, String userId) {
-        databaseReference.child("users").child(userId).child("appointments").child(appointment.getKey()).setValue(appointment);
+        databaseReference.child("mothers").child(userId).child("appointments").child(appointment.getKey()).setValue(appointment);
     }
 
     @Override
     public DatabaseReference queryForAppointment(String userId) {
-        return databaseReference.child(userId).child("appointments");
+        return databaseReference.child("mothers").child(userId).child("appointments");
     }
 
     @Override

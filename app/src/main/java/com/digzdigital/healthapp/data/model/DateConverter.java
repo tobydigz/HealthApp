@@ -33,7 +33,7 @@ public class DateConverter {
         String year = (String) android.text.format.DateFormat.format("yyyy", date); //2013
         String day = (String) android.text.format.DateFormat.format("dd", date); //20
         String ordinality = ordinal(Integer.parseInt(day));
-        return dayOfTheWeek + ", " + day + ordinality + " " + stringMonth + " " + year;
+        return dayOfTheWeek + ", "+ ordinality + " " + stringMonth + " " + year;
     }
 
     public String getShortDate(Date date) {

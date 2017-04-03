@@ -22,6 +22,10 @@
             android:id="@+id/nav_appointment"
             android:icon="@drawable/ic_dashboard_black_24dp"
             android:title="@string/appointments"/>
+        <item
+            android:id="@+id/nav_messages"
+            android:icon="@drawable/ic_account_box_black_24dp"
+            android:title="@string/messages"/>
     </group>
     <item
         android:menuCategory="secondary"

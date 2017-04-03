@@ -1,9 +1,9 @@
 package com.digzdigital.healthapp.fragment.messages;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -66,7 +66,7 @@ public class MessagesFragment extends Fragment implements ValueEventListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_messages, container, false);
         messageRv = (RecyclerView)view.findViewById(R.id.messageRv);
-        reference = FirebaseDatabase.getInstance().getReference().child(userId).child("messages");
+        reference = FirebaseDatabase.getInstance().getReference().child("reminders").child(userId);
         reference.addListenerForSingleValueEvent(this);
         return view;
     }
